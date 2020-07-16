@@ -311,9 +311,8 @@ public class SearchCoordinatorSvcImpl implements ISearchCoordinatorSvc {
 		sb.setFetchSize(mySyncSize);
 
 		final Integer loadSynchronousUpTo = getLoadSynchronousUpToOrNull(theCacheControlDirective);
-
 		if (theParams.isLoadSynchronous() || loadSynchronousUpTo != null) {
-			ourLog.debug("Search {} is loading in synchronous mode", searchUuid);
+			ourLog.debug("Search {} is loading in synchronous mode, loadSynchronousUpTo={}", searchUuid, loadSynchronousUpTo);
 			return executeQuery(theResourceType, theParams, theRequestDetails, searchUuid, sb, loadSynchronousUpTo);
 		}
 
