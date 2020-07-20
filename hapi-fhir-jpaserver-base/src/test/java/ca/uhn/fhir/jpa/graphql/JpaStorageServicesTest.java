@@ -20,6 +20,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.internal.util.MockUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
@@ -130,6 +131,8 @@ public class JpaStorageServicesTest extends BaseJpaR4Test {
 
 	@Test
 	public void testSearch() {
+		assertFalse(MockUtil.isMock(getContext().newBundleFactory()));
+
 		createSomePatientWithId("hapi-0f99592d-1a88-40ad-bf86-20911a53309d");
 
 		List<Argument> arguments = Collections.emptyList();
